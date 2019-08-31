@@ -4,7 +4,13 @@ const PATHS = {
 	BASE: '/'
 }
 
+const ACTIONS = {
+	FETCH_TRANSCRITPIONS: 'fetchTranscriptionsData',
+	UPLOAD_TRANSCRIPTIONS: 'uploadTranscriptionsData'
+}
+
 export default {
 	ENDPOINT: ENDPOINT,
-	PATHS: PATHS
+	PATHS: PATHS,
+	ACTIONS: ACTIONS
 }
