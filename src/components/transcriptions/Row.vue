@@ -19,7 +19,6 @@
             <!-- title -->
             <title-input
             :content="title"
-            :forceFocus="justCreated"
             :visible="contentEditVisible"
             @inputChanged="inputUpdateHandler">
             </title-input>
@@ -44,8 +43,7 @@ import TextArea from '@/components/common/TextArea'
 export default {
 	props: {
 		title: String,
-		description: String,
-		justCreated: Boolean
+		description: String
 	},
 	data () {
 		return {
@@ -71,10 +69,6 @@ export default {
 		},
 		textAreaValueChanged (newVal) { this.descriptionContent = newVal },
 		inputUpdateHandler (value) { this.titleContent = value }
-	},
-	mounted () {
-		if (!this.justCreated) return
-		this.$store.dispatch(this.$c.ACTIONS.TRANSCRIPTIONS_UPDATE_JUST_CREATED)
 	}
 }
 </script>

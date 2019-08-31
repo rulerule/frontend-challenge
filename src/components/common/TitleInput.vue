@@ -2,7 +2,6 @@
     <input
     :class="{'visible': visible }"
     class="title-input"
-    spellcheck="false"
     @change="inputChangeHandler"
     type="text"
     v-model="localContent">
@@ -13,10 +12,6 @@ export default {
 	props: {
 		content: String,
 		visible: {
-			type: Boolean,
-			default: () => { return false }
-		},
-		forceFocus: {
 			type: Boolean,
 			default: () => { return false }
 		}
@@ -30,10 +25,6 @@ export default {
 		inputChangeHandler () {
 			this.$emit('inputChanged', this.localContent)
 		}
-	},
-	mounted () {
-		console.log(this.forceFocus)
-		if (this.forceFocus) { this.$el.focus() }
 	}
 }
 </script>

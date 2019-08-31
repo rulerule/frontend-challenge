@@ -1,7 +1,7 @@
 <template>
     <header class="transcription-header-wrapper">
         <!-- header content -->
-        <div class="transcription-header-content add-max-width-80 center-element">
+        <div class="transcription-header-content center-element add-max-width-80">
             <title class="header-title"> {{$t('headerTitle')}} </title>
             <div class="buttons-container">
                 <!-- upload data -->
@@ -34,10 +34,10 @@ export default {
 	},
 	methods: {
 		fetchClickHandler () {
-			this.$store.dispatch(this.$c.ACTIONS.TRANSCRIPTIONS_FETCH)
+			this.$store.dispatch(this.$c.ACTIONS.FETCH_TRANSCRITPIONS)
 		},
 		uploadClickHandler () {
-			this.$store.dispatch(this.$c.ACTIONS.TRANSCRIPTIONS_UPLOAD)
+			this.$store.dispatch(this.$c.ACTIONS.UPLOAD_TRANSCRIPTIONS)
 		}
 	}
 }
@@ -45,15 +45,13 @@ export default {
 
 <style lang="scss">
 .transcription-header-wrapper {
-    position:fixed;
-    width:calc(100% - 42px); /* distance to sides + borders*/
+    width:100%;
     height: 60px;
     background-color:white;
     border-top-left-radius:6px;
     border-top-right-radius:6px;
     border-bottom:1px solid gray;
     box-shadow: 0 4px 2px -2px gray;
-    z-index:10;
 }
 .transcription-header-content {
     width:100%;
