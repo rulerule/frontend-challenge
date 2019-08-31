@@ -5,8 +5,10 @@ const PATHS = {
 }
 
 const ACTIONS = {
-	FETCH_TRANSCRITPIONS: 'fetchTranscriptionsData',
-	UPLOAD_TRANSCRIPTIONS: 'uploadTranscriptionsData'
+	TRANSCRIPTIONS_FETCH: 'transcriptionsFetch',
+	TRANSCRIPTIONS_UPLOAD: 'transcriptionsUpload',
+	TRANSCRITPIONS_ADD_TABLE_ROW: 'transcriptionsAddTableRow',
+	TRANSCRIPTIONS_UPDATE_JUST_CREATED: 'transcriptionsUpdateJustCreatedStatus'
 }
 
 export default {

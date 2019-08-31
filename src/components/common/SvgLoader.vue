@@ -23,6 +23,10 @@ export default {
     &.margin-right-16px {
         margin-right:16px;
     }
+    &.get-svg-bigger {
+        width:24px;
+        height:24px;
+    }
     &:hover {
         cursor:pointer;
     }

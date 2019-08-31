@@ -6,6 +6,7 @@
     :hidden="hidden">
         <svg-loader
         :svgName="svgName"
+        :classes="classes"
         :alt="alt">
         </svg-loader>
     </button>
@@ -45,6 +46,11 @@ export default {
     height:36px;
     &:focus {
         box-shadow: 0 0 3px 1px #859EFF;
+    }
+    &.center-manually {
+        position:relative;
+        left:50%;
+        transform:translateX(-50%);
     }
 }
 </style>

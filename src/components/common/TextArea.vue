@@ -3,6 +3,7 @@
     class="custom-text-area"
     v-model="localContent"
     type="text"
+    spellcheck="false"
     @change="textAreaChangeHandler"
     :class="{'visible': visible }"
     ></textarea>
