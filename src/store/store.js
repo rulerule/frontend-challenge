@@ -4,8 +4,8 @@ import Vuex from 'vuex'
 /* modules */
 import transcriptionModule from './modules/transcription'
 
-/* NOTE: generics are in their own file, cause if we end up getting a lot of
-generic state handling, this file doesnt become a scroll adventure */
+/* NOTE: generics are in their own file to avoid this file becomming a scroll adventure
+ if we end up getting a lot of generic state handling */
 import * as actions from './actions'
 import * as mutations from './mutations'
 import * as getters from './getters'

@@ -27,8 +27,6 @@ export default {
 .transcription-table {
     width:100%;
     height:auto;
-    &.margin-bottom-20px {
-        margin-bottom:20px;
-    }
+    &.margin-bottom-20px { margin-bottom:20px; }
 }
 </style>

@@ -8,8 +8,8 @@
         <!-- add new one button -->
         <image-button
         svgName="add-row"
-        alt="add table row"
-        title="add table row"
+        :alt="$t('addButtonAlt')"
+        :title="$t('addButtonTitle')"
         classes="center-manually get-svg-bigger"
         :clickCallback="addTableRowHandler">
         </image-button>
@@ -28,14 +28,10 @@ export default {
 		'image-button': ImageButton
 	},
 	methods: {
-		addTableRowHandler () {
-			this.$store.dispatch(this.$c.ACTIONS.TRANSCRITPIONS_ADD_TABLE_ROW)
-		}
+		addTableRowHandler () { this.$store.dispatch(this.$c.ACTIONS.TRANSCRITPIONS_ADD_TABLE_ROW) }
 	},
 	computed: {
-		transcriptionsData () {
-			return this.$store.getters.transcriptionsGetData
-		}
+		transcriptionsData () { return this.$store.getters.transcriptionsGetData }
 	}
 }
 </script>

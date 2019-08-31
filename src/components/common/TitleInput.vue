@@ -27,12 +27,9 @@ export default {
 		}
 	},
 	methods: {
-		inputChangeHandler () {
-			this.$emit('inputChanged', this.localContent)
-		}
+		inputChangeHandler () { this.$emit('inputChanged', this.localContent) }
 	},
 	mounted () {
-		console.log(this.forceFocus)
 		if (this.forceFocus) { this.$el.focus() }
 	}
 }
@@ -47,11 +44,7 @@ export default {
     font-weight: 600;
     color: #566074;
     box-sizing:border-box;
-    &.visible {
-        border-bottom:1px solid gray;
-    }
-    &:focus {
-        border-bottom: 1px solid gray;
-    }
+    &.visible { border-bottom:1px solid gray; }
+    &:focus { border-bottom: 1px solid gray; }
 }
 </style>

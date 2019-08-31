@@ -31,8 +31,6 @@ export default {
 	},
 	components: {
 		'svg-loader': SvgLoader
-	},
-	methods: {
 	}
 }
 </script>
@@ -44,9 +42,7 @@ export default {
     border: none;
     width:36px;
     height:36px;
-    &:focus {
-        box-shadow: 0 0 3px 1px #859EFF;
-    }
+    &:focus { box-shadow: 0 0 3px 1px #859EFF; }
     &.center-manually {
         position:relative;
         left:50%;

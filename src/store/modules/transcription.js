@@ -31,6 +31,7 @@ const actions = {
 		const request = axios({
 			method: 'POST'
 		})
+		console.log(request)
 	},
 	/* Creates a new entry */
 	transcriptionsAddTableRow: (context, payload) => {
@@ -57,7 +58,10 @@ const actions = {
 		}
 		context.commit('transcriptionsAddTableRow', newEntry)
 	},
-	/* Updated just created */
+	/* Updated just created
+    it will just put the justCreated variable of all transcriptions to false
+    so we make sure they just have that status the moment after being created
+    */
 	transcriptionsUpdateJustCreatedStatus: (context, payload) => {
 		context.commit('transcriptionsUpdateJustCreatedStatus')
 	}

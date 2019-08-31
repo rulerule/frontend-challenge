@@ -12,7 +12,6 @@
                 <!-- person icon -->
                 <svg-loader
                 svgName="person"
-                alt="person icon"
                 classes="margin-top-negative-3px margin-right-16px">
                 </svg-loader>
             </div>
@@ -64,9 +63,9 @@ export default {
 			let tableRow = this.$el
 			bottomRow.style.height = `${newHeight}px`
 			/* table row new height
-            55px( 80px(total) - 25px(base of bottomRow) ) + X(new bottomRow Height)
+            65px( 90px(total) - 25px(base of bottomRow) ) + X(new bottomRow Height)
             */
-			let tableRowNewHeight = 55 + newHeight
+			let tableRowNewHeight = 65 + newHeight
 			tableRow.style.height = `${tableRowNewHeight}px`
 		},
 		textAreaValueChanged (newVal) { this.descriptionContent = newVal },

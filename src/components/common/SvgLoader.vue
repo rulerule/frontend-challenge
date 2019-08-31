@@ -17,18 +17,12 @@ export default {
 .svg-icon {
     width:20px;
     height:20px;
-    &.margin-top-negative-3px {
-        margin-top: -3px /* specific case to center the icon with the checkbox when on transcription row */
-    }
-    &.margin-right-16px {
-        margin-right:16px;
-    }
+    &.margin-top-negative-3px { margin-top: -3px } /* specific case to center the icon with the checkbox when on transcription row */
+    &.margin-right-16px { margin-right:16px; }
+    &:hover { cursor:pointer; }
     &.get-svg-bigger {
         width:24px;
         height:24px;
-    }
-    &:hover {
-        cursor:pointer;
     }
 }
 </style>

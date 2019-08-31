@@ -1,3 +1,9 @@
 {
-    "headerTitle": "transcriptions"
+    "headerTitle": "transcriptions",
+    "addButtonAlt": "Add Table Row",
+    "addButtonTitle": "Add Table Row",
+    "uploadButtonAlt": "Upload Information",
+    "uploadButtonTitle": "Upload Information",
+    "fetchButtonAlt": "Get Information",
+    "fetchButtonTitle": "Get Information"
 }

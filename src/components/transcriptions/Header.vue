@@ -7,15 +7,15 @@
                 <!-- upload data -->
                 <image-button
                 svgName="upload"
-                alt="upload information"
-                title="upload data"
+                :alt="$t('uploadButtonAlt')"
+                :title="$t('uploadButtonTitle')"
                 :clickCallback="uploadClickHandler">
                 </image-button>
                 <!-- get data -->
                 <image-button
                 svgName="fetch-document"
-                alt="fetch information"
-                title="get data"
+                :alt="$t('fetchButtonAlt')"
+                :title="$t('fetchButtonTitle')"
                 :clickCallback="fetchClickHandler">
                 </image-button>
             </div>
@@ -33,12 +33,8 @@ export default {
 		'image-button': ImgButton
 	},
 	methods: {
-		fetchClickHandler () {
-			this.$store.dispatch(this.$c.ACTIONS.TRANSCRIPTIONS_FETCH)
-		},
-		uploadClickHandler () {
-			this.$store.dispatch(this.$c.ACTIONS.TRANSCRIPTIONS_UPLOAD)
-		}
+		fetchClickHandler () { this.$store.dispatch(this.$c.ACTIONS.TRANSCRIPTIONS_FETCH) },
+		uploadClickHandler () { this.$store.dispatch(this.$c.ACTIONS.TRANSCRIPTIONS_UPLOAD) }
 	}
 }
 </script>
@@ -70,5 +66,4 @@ export default {
         color: #414c5E;
     }
 }
-
 </style>
