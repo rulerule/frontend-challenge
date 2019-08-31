@@ -2,31 +2,64 @@ const state = {
 	transcriptionsData: []
 }
 const getters = {
-	getTranscriptionsData: state => {
-		return state.transcriptionsData
-	}
+	transcriptionsGetData: state => { return state.transcriptionsData }
 }
 
 const mutations = {
-	fetchTranscriptionsData: (state, payload) => {
-		state.transcriptionsData = payload
+	transcriptionsFetch: (state, payload) => { state.transcriptionsData = payload },
+	transcriptionsAddTableRow: (state, payload) => {
+		state.transcriptionsData = [...state.transcriptionsData, payload]
+	},
+	transcriptionsUpdateJustCreatedStatus: (state, payload) => {
+		state.transcriptionsData = state.transcriptionsData.map(element => {
+			return {
+				...element,
+				justCreated: false
+			}
+		})
 	}
 }
 
 const actions = {
-	fetchTranscriptionsData: (context, payload) => {
-		const request = axios({
-			method: 'GET'
-		})
-		request.then(res => {
-			context.commit('fetchTranscriptionsData', res.data)
-		})
+	/* fetch the data from the server (mock) */
+	transcriptionsFetch: (context, payload) => {
+		const request = axios({ method: 'GET' })
+		request.then(res => { context.commit('transcriptionsFetch', res.data) })
 	},
 	/* TODO */
-	uploadTranscriptionsData: (context, payload) => {
+	transcriptionsUpload: (context, payload) => {
 		const request = axios({
 			method: 'POST'
 		})
+	},
+	/* Creates a new entry */
+	transcriptionsAddTableRow: (context, payload) => {
+		/* NOTE: i need to generate a temporary id here to give as key
+           so i ll just put together all the ids i already have.
+           I ll assume this id would later on be ignored by the server
+           that would create the real id.
+           Otherway would be better to just random generate them, since 2 users
+           creating differente transcriptions at the same time would result
+           in the second one not being able to create due to replication of ids
+        */
+		var newEntry = {
+			voice: '',
+			text: '',
+			justCreated: true /* this is used so the component knows to focus the input */
+		}
+		if (state.transcriptionsData.length === 0) {
+			newEntry.id = 1
+		} else {
+			const myId = state.transcriptionsData.reduce((newId, element) => {
+				return newId + element.id
+			}, 0)
+			newEntry.id = myId
+		}
+		context.commit('transcriptionsAddTableRow', newEntry)
+	},
+	/* Updated just created */
+	transcriptionsUpdateJustCreatedStatus: (context, payload) => {
+		context.commit('transcriptionsUpdateJustCreatedStatus')
 	}
 }
 
