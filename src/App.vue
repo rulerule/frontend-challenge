@@ -6,4 +6,11 @@
 
 <style lang="scss">
 @import 'src/styles/main.scss';
+#app {
+    width:100%;
+    height:100%;
+    padding: 20px;
+    background-color: #d0cfcf;
+    box-sizing:border-box;
+}
 </style>

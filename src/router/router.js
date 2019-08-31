@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 /* Modules */
-import transcriptionModule from '@/router/modules/transcription'
+import homeModule from '@/router/modules/home'
 
 Vue.use(Router)
 
@@ -12,7 +12,7 @@ const baseRoutes = []
 
 /* merge the baseRoutes with the ones from modules */
 const routes = baseRoutes.concat(
-	transcriptionModule
+	homeModule
 )
 
 export default new Router({ routes })

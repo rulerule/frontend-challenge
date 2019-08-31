@@ -2,12 +2,8 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 @import '_reset.scss';
 
+html { width:100%; height:100%; font-size:62.5% } /* 62.5% for easier REM use */
+body { width: 100%; height:100%; }
 title { display: block; }
-
-.add-max-width-1024 {
-    max-width:1024px;
-}
-
-.center-element {
-    margin: 0 auto;
-}
+.add-max-width-80 { max-width:80%; }
+.center-element { margin: 0 auto; }

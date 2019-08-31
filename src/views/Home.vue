@@ -1,20 +1,15 @@
 <template>
-    <div>
-        <app-header></app-header>
-        <app-table></app-table>
-    </div>
+    <app-transcriptions></app-transcriptions>
 </template>
 
 <script>
-import Header from '@/components/transcriptions/Header'
-import Table from '@/components/transcriptions/Table'
+import Transcriptions from '@/components/transcriptions/Base'
 export default {
 	data () {
 		return {}
 	},
 	components: {
-		'app-header': Header,
-		'app-table': Table
+		'app-transcriptions': Transcriptions
 	}
 }
 </script>
