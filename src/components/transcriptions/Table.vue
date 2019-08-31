@@ -1,5 +1,7 @@
 <template>
-    <app-row></app-row>
+    <table class="transcription-table center-content">
+        <app-row></app-row>
+    </table>
 </template>
 
 <script>
@@ -14,3 +16,10 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss">
+.transcription-table {
+    width:100%;
+    height:auto;
+}
+</style>
