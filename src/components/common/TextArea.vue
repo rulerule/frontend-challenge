@@ -25,23 +25,34 @@ export default {
 	methods: {
 		textAreaChangeHandler () {
 			this.$emit('textAreaChanged', this.localContent)
-		}
-	},
-	watch: {
-		localContent (newVal, oldVal) {
+		},
+		updateSize () {
 			/* get the text area element */
 			let textarea = this.$el
 			/* set it style to the 25px we want it to have as base */
 			textarea.style.height = '25px'
 			/* check the scrollHeight to set as the new height */
 			let heightNeeded = textarea.scrollHeight
-			/* set the height as the needed height for it , plus 2px of safety */
-			textarea.style.height = `${heightNeeded + 2}px`
+			/* set the height as the needed height for it */
+			textarea.style.height = `${heightNeeded}px`
+			/* emit the size changed so the row can update his size aswell */
+			this.$emit('sizeChanged', heightNeeded)
+		}
+	},
+	watch: {
+		localContent (newVal, oldVal) {
 			if (newVal === oldVal) return
-			/* emit the newVal and the new height */
-			this.$emit('valuesChanged', { newVal: newVal, newHeight: heightNeeded })
+			this.updateSize()
+			this.$emit('valueChanged', newVal)
 		},
 		content (newVal) { this.localContent = newVal }
+	},
+	mounted () {
+		setTimeout(() => {
+			this.$nextTick(() => {
+				this.updateSize()
+			})
+		}, 150) /* 150ms to be higher than monitor refresh rate */
 	}
 }
 </script>

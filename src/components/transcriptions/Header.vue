@@ -7,12 +7,16 @@
                 <!-- upload data -->
                 <image-button
                 svgName="upload"
-                alt="upload information">
+                alt="upload information"
+                title="upload data"
+                :clickCallback="uploadClickHandler">
                 </image-button>
                 <!-- get data -->
                 <image-button
                 svgName="fetch-document"
-                alt="fetch information">
+                alt="fetch information"
+                title="get data"
+                :clickCallback="fetchClickHandler">
                 </image-button>
             </div>
         </div>
@@ -27,6 +31,14 @@ export default {
 	},
 	components: {
 		'image-button': ImgButton
+	},
+	methods: {
+		fetchClickHandler () {
+			this.$store.dispatch(this.$c.ACTIONS.FETCH_TRANSCRITPIONS)
+		},
+		uploadClickHandler () {
+			this.$store.dispatch(this.$c.ACTIONS.UPLOAD_TRANSCRIPTIONS)
+		}
 	}
 }
 </script>

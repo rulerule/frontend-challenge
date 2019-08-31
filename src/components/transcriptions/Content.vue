@@ -1,6 +1,6 @@
 <template>
     <main class="transcription-content-wrapper center-element add-max-width-80">
-        <transcription-table></transcription-table>
+        <transcription-table :transcriptionsData="transcriptionsData"></transcription-table>
         <!-- <image-button></image-button> -->
     </main>
 </template>
@@ -15,6 +15,11 @@ export default {
 	components: {
 		'transcription-table': Table
 		// 'image-button': ImageButton
+	},
+	computed: {
+		transcriptionsData () {
+			return this.$store.getters.getTranscriptionsData
+		}
 	}
 }
 </script>

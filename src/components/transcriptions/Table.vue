@@ -1,15 +1,24 @@
 <template>
     <table class="transcription-table center-content">
-        <app-row></app-row>
+        <app-row
+        v-for="element in transcriptionsData"
+        :key="element.id"
+        :title="element.voice"
+        :description="element.text">
+        </app-row>
     </table>
 </template>
 
 <script>
 import Row from '@/components/transcriptions/Row'
 export default {
-	props: {},
+	props: {
+		transcriptionsData: Array
+	},
 	data () {
-		return {}
+		return {
+			// tableData: this.transcriptionsData
+		}
 	},
 	components: {
 		'app-row': Row

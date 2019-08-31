@@ -18,16 +18,17 @@
             </div>
             <!-- title -->
             <title-input
-            :content="titleContent"
+            :content="title"
             :visible="contentEditVisible"
             @inputChanged="inputUpdateHandler">
             </title-input>
         </div>
         <div class="bottom-row">
             <text-area
-            :content="descriptionContent"
+            :content="description"
             :visible="contentEditVisible"
-            @valuesChanged="textAreaUpdateHandler">
+            @sizeChanged="textAreaSizeChanged"
+            @valueChanged="textAreaValueChanged">
             </text-area>
         </div>
 
@@ -40,11 +41,13 @@ import SvgLoader from '@/components/common/SvgLoader'
 import TitleInput from '@/components/common/TitleInput'
 import TextArea from '@/components/common/TextArea'
 export default {
+	props: {
+		title: String,
+		description: String
+	},
 	data () {
 		return {
-			contentEditVisible: false,
-			titleContent: 'teste',
-			descriptionContent: 'teste'
+			contentEditVisible: false
 		}
 	},
 	components: {
@@ -54,20 +57,18 @@ export default {
 		'text-area': TextArea
 	},
 	methods: {
-		textAreaUpdateHandler (params) {
-			this.descriptionContent = params.newVal
+		textAreaSizeChanged (newHeight) {
 			let bottomRow = this.$el.getElementsByClassName('bottom-row')[0]
 			let tableRow = this.$el
-			bottomRow.style.height = `${params.newHeight}px`
+			bottomRow.style.height = `${newHeight}px`
 			/* table row new height
             55px( 80px(total) - 25px(base of bottomRow) ) + X(new bottomRow Height)
             */
-			let tableRowNewHeight = 55 + params.newHeight
+			let tableRowNewHeight = 55 + newHeight
 			tableRow.style.height = `${tableRowNewHeight}px`
 		},
-		inputUpdateHandler (value) {
-			this.titleContent = value
-		}
+		textAreaValueChanged (newVal) { this.descriptionContent = newVal },
+		inputUpdateHandler (value) { this.titleContent = value }
 	}
 }
 </script>
@@ -75,12 +76,13 @@ export default {
 <style lang="scss">
 .transcription-table-row {
     width:100%;
-    height:80px;
+    height:90px;
     background-color:white;
     box-sizing:border-box;
-    padding:15px;
+    padding:20px;
     display:flex;
     flex-direction:column;
+    border-bottom:1px solid lightgray;
     .top-row {
         width:100%;
         height:25px;
@@ -107,6 +109,7 @@ export default {
     &:last-of-type {
         border-bottom-left-radius:6px;
         border-bottom-right-radius:6px;
+        border-bottom:unset;
     }
 }
 </style>

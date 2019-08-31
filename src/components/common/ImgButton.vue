@@ -1,7 +1,7 @@
 <template>
     <button
     class="image-button"
-    @click="emitClicked"
+    @click="clickCallback"
     :class="classes"
     :hidden="hidden">
         <svg-loader
@@ -25,15 +25,13 @@ export default {
 			default: () => { return false }
 		},
 		svgName: String,
-		alt: String
+		alt: String,
+		clickCallback: Function
 	},
 	components: {
 		'svg-loader': SvgLoader
 	},
 	methods: {
-		emitClicked (ev) {
-			console.log(ev)
-		}
 	}
 }
 </script>
