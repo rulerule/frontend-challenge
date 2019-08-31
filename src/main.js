@@ -6,6 +6,7 @@ import App from './App.vue'
 import './plugins/axios'
 import axiosInstanceSetup from '@/network/axiosSetup'
 import i18n from './plugins/i18n'
+import './setups/constants'
 
 import router from './router/router'
 import store from './store/store'

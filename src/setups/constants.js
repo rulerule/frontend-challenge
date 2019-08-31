@@ -1,4 +1,4 @@
 import Vue from 'vue'
-import Constants from '@/assets/data/constants'
+import Constants from '@/assets/constants'
 
 Vue.prototype.$c = Constants
