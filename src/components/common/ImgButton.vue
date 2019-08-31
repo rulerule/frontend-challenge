@@ -43,6 +43,8 @@ export default {
     background-color: transparent;
     outline: none;
     border: none;
+    width:36px;
+    height:36px;
     &:focus {
         box-shadow: 0 0 3px 1px #859EFF;
     }
