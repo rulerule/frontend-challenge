@@ -12,7 +12,7 @@
 export default {
 	props: {
 		content: String,
-		visible: {
+		visible: { /* if the border bottom is visible */
 			type: Boolean,
 			default: () => { return false }
 		},
