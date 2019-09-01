@@ -10,10 +10,13 @@
                 classes="margin-right-16px">
                 </custom-checkbox>
                 <!-- person icon -->
-                <svg-loader
-                svgName="person"
-                classes="margin-top-negative-3px margin-right-16px">
-                </svg-loader>
+                <!-- NOTE: this is loaded in a different way cause we need
+                to keep it as svg instead of image to change his color on hover
+                -->
+                <person-svg
+                :class="{'change-to-purple': contentEditVisible }"
+                class="person-svg">
+                </person-svg>
             </div>
             <!-- title -->
             <title-input
@@ -22,6 +25,15 @@
             :visible="contentEditVisible"
             @inputChanged="inputUpdateHandler">
             </title-input>
+            <!-- remove button -->
+            <image-button
+            svgName="delete"
+            :alt="$t('deleteButtonAlt')"
+            :title="$t('deleteButtonTitle')"
+            classes="align-self-top-right get-svg-smaller"
+            :hidden="!contentEditVisible"
+            :clickCallback="deleteClickHandler">
+            </image-button>
         </div>
         <div class="bottom-row">
             <text-area
@@ -37,14 +49,16 @@
 
 <script>
 import CustomCheckbox from '@/components/common/CustomCheckbox'
-import SvgLoader from '@/components/common/SvgLoader'
 import TitleInput from '@/components/common/TitleInput'
 import TextArea from '@/components/common/TextArea'
+import ImgButton from '@/components/common/ImgButton'
+import PersonSvg from '@/assets/icons/person.svg?inline'
 export default {
 	props: {
 		title: String,
 		description: String,
-		justCreated: Boolean
+		justCreated: Boolean,
+		elementId: [String, Number]
 	},
 	data () {
 		return {
@@ -53,9 +67,10 @@ export default {
 	},
 	components: {
 		'custom-checkbox': CustomCheckbox,
-		'svg-loader': SvgLoader,
 		'title-input': TitleInput,
-		'text-area': TextArea
+		'text-area': TextArea,
+		'image-button': ImgButton,
+		'person-svg': PersonSvg
 	},
 	methods: {
 		textAreaSizeChanged (newHeight) {
@@ -67,6 +82,9 @@ export default {
             */
 			let tableRowNewHeight = 65 + newHeight
 			tableRow.style.height = `${tableRowNewHeight}px`
+		},
+		deleteClickHandler () {
+			this.$store.dispatch(this.$c.ACTIONS.TRANSCRIPTIONS_DELETE_ROW, this.elementId)
 		},
 		textAreaValueChanged (newVal) { this.descriptionContent = newVal },
 		inputUpdateHandler (value) { this.titleContent = value }
@@ -82,6 +100,7 @@ export default {
 .transcription-table-row {
     width:100%;
     height:90px;
+    position:relative;
     background-color:white;
     box-sizing:border-box;
     padding:20px;
@@ -99,6 +118,18 @@ export default {
             width: 68px;
             display:flex;
             flex-direction:row;
+            .person-svg {
+                margin-right:16px;
+                margin-top:-5px;
+                &.change-to-purple {
+                    /* change color class was manually added to the svg
+                    so it is easier to go directly to the part of it i need
+                    to change the color */
+                    .change-color {
+                        fill: #859EFF
+                    }
+                }
+            }
         }
     }
     .bottom-row {

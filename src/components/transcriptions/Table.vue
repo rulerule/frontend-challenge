@@ -5,6 +5,7 @@
         :key="element.id"
         :title="element.voice"
         :description="element.text"
+        :elementId="element.id"
         :justCreated="element.justCreated">
         </app-row>
     </table>

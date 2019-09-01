@@ -10,7 +10,8 @@ const ACTIONS = {
 	TRANSCRIPTIONS_FETCH: 'transcriptionsFetch',
 	TRANSCRIPTIONS_UPLOAD: 'transcriptionsUpload',
 	TRANSCRITPIONS_ADD_TABLE_ROW: 'transcriptionsAddTableRow',
-	TRANSCRIPTIONS_UPDATE_JUST_CREATED: 'transcriptionsUpdateJustCreatedStatus'
+	TRANSCRIPTIONS_UPDATE_JUST_CREATED: 'transcriptionsUpdateJustCreatedStatus',
+	TRANSCRIPTIONS_DELETE_ROW: 'transcriptionsDeleteRow'
 }
 
 export default {

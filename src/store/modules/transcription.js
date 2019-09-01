@@ -1,5 +1,9 @@
 const state = {
-	transcriptionsData: []
+	transcriptionsData: [],
+	/* i am not really sure if i should be sending everything back to the server
+    * or just the ones i created, so i ll send just the new ones, if i need to send them
+    * all instead i ll just swap the array i send */
+	transcriptionsNotYetInTheServer: []
 }
 const getters = {
 	transcriptionsGetData: state => { return state.transcriptionsData }
@@ -9,6 +13,8 @@ const mutations = {
 	transcriptionsFetch: (state, payload) => { state.transcriptionsData = payload },
 	transcriptionsAddTableRow: (state, payload) => {
 		state.transcriptionsData = [...state.transcriptionsData, payload]
+		/* add the information to both arrays */
+		state.transcriptionsNotYetInTheServer = [...state.transcriptionsNotYetInTheServer, payload]
 	},
 	transcriptionsUpdateJustCreatedStatus: (state, payload) => {
 		state.transcriptionsData = state.transcriptionsData.map(element => {
@@ -16,6 +22,15 @@ const mutations = {
 				...element,
 				justCreated: false
 			}
+		})
+	},
+	transcriptionsDeleteRow: (state, payload) => {
+		state.transcriptionsData = state.transcriptionsData.filter(ele => {
+			return ele.id !== payload
+		})
+		/* remove from both arrays, so we dont end up creating, deleting, and then sending it to the server anyway */
+		state.transcriptionsNotYetInTheServer = state.transcriptionsNotYetInTheServer.filter(ele => {
+			return ele.id !== payload
 		})
 	}
 }
@@ -29,9 +44,16 @@ const actions = {
 	/* TODO */
 	transcriptionsUpload: (context, payload) => {
 		const request = axios({
-			method: 'POST'
+			method: 'POST',
+			data: state.transcriptionsNotYetInTheServer
 		})
-		console.log(request)
+		request.then(res => {
+			/* NOTE: here there is 2 options, either the response would be the new
+            list updated, or i would trigger the fetch again ,so i would keep myself up to date
+            if someone else was creating transcriptions at the same time.
+            Since the mock doesnt really update, i ll do nothing here, cause triggering a fetch
+            would lead us into having only the 3 originals */
+		})
 	},
 	/* Creates a new entry */
 	transcriptionsAddTableRow: (context, payload) => {
@@ -64,6 +86,9 @@ const actions = {
     */
 	transcriptionsUpdateJustCreatedStatus: (context, payload) => {
 		context.commit('transcriptionsUpdateJustCreatedStatus')
+	},
+	transcriptionsDeleteRow: (context, payload) => {
+		context.commit('transcriptionsDeleteRow', payload)
 	}
 }
 
