@@ -1,7 +1,13 @@
 <template>
     <label :class="classes" class="checkbox-container">
-        <input type="checkbox">
-        <span class="checkmark"></span>
+        <input
+        @focus="focusActive = true"
+        @blur="focusActive = false"
+        type="checkbox">
+        <span
+        class="checkmark"
+        :class="{'focus-applied': focusActive}">
+        </span>
     </label>
 </template>
 
@@ -9,6 +15,11 @@
 export default {
 	props: {
 		classes: String
+	},
+	data () {
+		return {
+			focusActive: false
+		}
 	}
 }
 /*
@@ -40,8 +51,8 @@ NOTE: Got the checkbox directly from https://www.w3schools.com/howto/howto_css_c
     position: absolute;
     opacity: 0;
     cursor: pointer;
-    height: 0;
-    width: 0;
+    height: 16px;
+    width: 16px;
 }
 
 /* Create a custom checkbox */
@@ -55,6 +66,9 @@ NOTE: Got the checkbox directly from https://www.w3schools.com/howto/howto_css_c
     border-radius:2px;
     border: 1.5px solid #859EFF;
     box-sizing:border-box;
+    &.focus-applied {
+        box-shadow: 0 0 1px 1px #859EFF
+    }
 }
 
 /* When the checkbox is checked, add a purple background */
