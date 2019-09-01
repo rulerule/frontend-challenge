@@ -48,5 +48,10 @@ export default {
         left:50%;
         transform:translateX(-50%);
     }
+    &.align-self-top-right {
+        position:absolute;
+        top:10px;
+        right:20px;
+    }
 }
 </style>

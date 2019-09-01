@@ -5,5 +5,7 @@
     "uploadButtonAlt": "Upload Information",
     "uploadButtonTitle": "Upload Information",
     "fetchButtonAlt": "Get Information",
-    "fetchButtonTitle": "Get Information"
+    "fetchButtonTitle": "Get Information",
+    "deleteButtonAlt": "Delete Row",
+    "deleteButtonTitle": "Delete Row"
 }

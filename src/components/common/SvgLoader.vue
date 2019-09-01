@@ -24,5 +24,9 @@ export default {
         width:24px;
         height:24px;
     }
+    &.get-svg-smaller {
+        width:16px;
+        height:16px;
+    }
 }
 </style>
