@@ -3,6 +3,7 @@
     class="image-button"
     @click="clickCallback"
     :class="classes"
+    :id="elementId"
     :hidden="hidden">
         <svg-loader
         :svgName="svgName"
@@ -27,7 +28,8 @@ export default {
 		},
 		svgName: String,
 		alt: String,
-		clickCallback: Function
+		clickCallback: Function,
+		elementId: String
 	},
 	components: {
 		'svg-loader': SvgLoader

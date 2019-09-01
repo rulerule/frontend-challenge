@@ -32,6 +32,7 @@
             :title="$t('deleteButtonTitle')"
             classes="align-self-top-right get-svg-smaller"
             :hidden="!contentEditVisible"
+			class="delete-button"
             :clickCallback="deleteClickHandler">
             </image-button>
         </div>

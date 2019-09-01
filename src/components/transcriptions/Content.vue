@@ -11,6 +11,7 @@
         :alt="$t('addButtonAlt')"
         :title="$t('addButtonTitle')"
         classes="center-manually get-svg-bigger"
+        elementId="addNewButton"
         :clickCallback="addTableRowHandler">
         </image-button>
     </main>

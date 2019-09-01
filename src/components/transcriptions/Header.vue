@@ -9,6 +9,7 @@
                 svgName="upload"
                 :alt="$t('uploadButtonAlt')"
                 :title="$t('uploadButtonTitle')"
+                elementId="uploadData"
                 :clickCallback="uploadClickHandler">
                 </image-button>
                 <!-- get data -->
@@ -16,6 +17,7 @@
                 svgName="fetch-document"
                 :alt="$t('fetchButtonAlt')"
                 :title="$t('fetchButtonTitle')"
+                elementId="downloadData"
                 :clickCallback="fetchClickHandler">
                 </image-button>
             </div>
